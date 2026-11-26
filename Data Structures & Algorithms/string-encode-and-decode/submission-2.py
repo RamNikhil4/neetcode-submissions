@@ -1,0 +1,22 @@
+class Solution:
+    def encode(self, strs: List[str]) -> str:
+        ans = ""
+        for s in strs:
+            ans += f"{len(s)}#{s[::-1]}"
+        return ans
+
+    def decode(self, s: str) -> List[str]:
+
+        ans = []
+        i = 0
+        while i<len(s):
+            l=0
+            while s[i]!="#":
+                l=l*10+int(s[i])
+                i+=1
+            i+=1
+            j=i+l
+            res=s[i:j][::-1]
+            ans.append(res)
+            i=j
+        return ans
